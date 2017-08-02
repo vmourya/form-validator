@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Form Validator</title>
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="js/v-form.js"></script>
+<script>
+	$("body").vf({
+		Form : '#contact, #contact1', // only form ids
+		Error : 'This field is required',
+		InvalidError : 'Enter Valid value',
+		InvalidEmail : 'Enter valid email Id',
+		InvalidPhone : 'Enter valid phone number', 
+		FormProcessing : 'Please wait...', // Massage if validation done.
+		KeyupValidate : true, // Set true if want to validate on key press (Default is false)
+		errorShow : false, // Set true if want to show errors (Default is true)
+		errorList : { // set error for individual field identify by name
+			one : 'error one' ,
+			two : 'error two',
+			five : 'error five'
+		}
+	});
+</script>
+</head>
+<body>
+<style>
+*{margin:0; padding:0; border:none medium; max-width:100%;}
+body{ width:100%; height:100%;}
+section{width:100%; margin:0 auto;}
+form { border: 1px solid #dedede;margin: 50px auto; padding: 20px; width: 50%;}
+fieldset{width:100%; flaot:left; padding:10px 0;}
+input{width:98%; padding:1%; border-bottom:2px solid #aaa;}
+input.valid{border-bottom:2px solid #00bb00;}
+input.invalid{border-bottom:2px solid #e00;}
+input:hover{border-bottom:2px solid #000;}
+input[type='submit']{width:100%; background:#aaa; color:#fff; font-size:20px;  cursor:pointer;}
+input[type='submit']:hover{background:#fff; color:#000;}
+span.vf-error { color: #f00; border: 1px solid; padding: 5px 1%; float: left; width: 98%; margin-top: 5px;}
+.vf-process { border: 3px solid #ffbb00; float: left; padding: 10px 0; text-align: center; width: calc(100% - 6px);}
+
+section {
+    float: left;
+    width: 100%;
+	text-align:center;
+}
+
+section > a {
+    background: #999 none repeat scroll 0 0;
+    border-radius: 10px;
+    color: #fff;
+    font-family: arial;
+    font-size: 20px;
+    padding: 10px 100px;
+    text-decoration: none;
+}
+section > a:hover{background:#777;}
+</style>
+	
+    <section>
+			<form id="contact1" action='' method='POST' >
+				<fieldset>
+					<input type='text' name='' id='' placeholder='Value for maximum 5 charactors' class='vf-required' vf-max='5' />
+				</fieldset>
+				<fieldset>
+					<input type='text' name='two' id='' placeholder='Phone number validation' class='vf-required vf-phone'vf-min="10"/>
+				</fieldset>
+				<fieldset>
+					<input type='text' name='three' id='' placeholder='Email  validation' class='vf-required vf-email email'/>
+				</fieldset>
+				<fieldset>
+					<input type='text' name='four' id='' placeholder='Email Confirmation ' class='vf-required vf-email' vf-match='email' vf-match-error=''/>
+				</fieldset>				
+				<fieldset>
+					<input type='text' name='five' id='' placeholder='Value from 2-15 charactors' class='vf-required' vf-min='2' vf-max='15'/>
+				</fieldset>
+				<fieldset>
+					<input type='submit' name='submit' id='submit' value='submit'/>
+				</fieldset>
+			</form>
+    </section>
+    <section>
+			<form id="contact" action='' method='POST' >
+				<fieldset>
+					<input type='text' name='one' id='' placeholder='Value for maximum 5 charactors' class='vf-required' vf-max='5' />
+				</fieldset>
+				<fieldset>
+					<input type='text' name='two' id='' placeholder='Phone number validation' class='vf-required vf-phone'vf-min="10"/>
+				</fieldset>
+				<fieldset>
+					<input type='text' name='three' id='' placeholder='Email  validation' class='vf-required vf-email email1'/>
+				</fieldset>
+				<fieldset>
+					<input type='text' name='four' id='' placeholder='Email Confirmation ' class='vf-required vf-email' vf-match='email1' vf-match-error=''/>
+				</fieldset>				
+				<fieldset>
+					<input type='text' name='five' id='' placeholder='Value from 2-15 charactors' class='vf-required' vf-min='2' vf-max='15'/>
+				</fieldset>
+				<fieldset>
+					<input type='submit' name='submit' id='submit' value='submit'/>
+				</fieldset>
+			</form>
+    </section>
+</body>
+</html>
